@@ -56,7 +56,7 @@ function criarTabuleiro() {
 
 // FUNÇÃO PARA VIRAR A CARTA
 function virarCarta() {
-    if (jogoBloqueado || this === primeiraCarta) return; // Bloqueia cliques se necessário
+    if (jogoBloqueado || this === primeiraCarta || this.classList.contains('pair-found')) return; // Bloqueia cartas já viradas ou que formaram par
 
     this.classList.add('flipped'); // Adiciona a classe 'flipped'
     const img = this.querySelector('img');
@@ -82,6 +82,8 @@ function verificarMatch() {
         paresEncontrado++; // Aumenta o contador de pares encontrados
         primeiraCarta.classList.add('certa'); // Marca como par certo
         segundaCarta.classList.add('certa'); // Marca como par certo
+        primeiraCarta.classList.add('pair-found'); // Adiciona a classe para cartas que já formaram par
+        segundaCarta.classList.add('pair-found'); // Adiciona a classe para cartas que já formaram par
         resetar(); // Reseta as cartas para novas seleções
     } else {
         erroCount++; // Aumenta o contador de erros
@@ -104,11 +106,15 @@ function resetar() {
 
     // Verifica se o jogo foi concluído
     if (paresEncontrado === images.length / 2) {
-        clearInterval(contadorTempo); // Para o contador de tempo
-        jogoConcluido = true; // Marca o jogo como concluído
-        alert('Parabéns! Você encontrou todos os pares!'); // Exibe alerta de vitória
+        // Espera um segundo para garantir que a última carta seja virada
+        setTimeout(() => {
+            clearInterval(contadorTempo); // Para o contador de tempo
+            jogoConcluido = true; // Marca o jogo como concluído
+            alert(`Parabéns! Você encontrou todos os pares em ${tempoInicial} segundos! com ${erroCount} erros`); // Exibe alerta de vitória
+        }, 500); // Tempo de espera antes de mostrar a mensagem
     }
 }
+
 
 // FUNÇÃO PARA INICIAR O JOGO
 function iniciarJogo() {
