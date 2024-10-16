@@ -31,6 +31,8 @@ dd {
 
 /* CENTRALIZAR PÁGINA */
 body {
+    font-family: 'Comic Sans MS', sans-serif;
+    /* Define a fonte utilizada */
     display: flex;
     /* Usa Flexbox para centralizar elementos */
     justify-content: center;
@@ -43,6 +45,8 @@ body {
     /* Remove margens do body */
     flex-direction: column;
     /* Organiza os filhos em coluna */
+    background-color: #FFFBCC;
+    /* Define a cor de fundo principal */
 }
 
 /* DEFINIR DIMENSÕES DIV ROOT */
@@ -115,6 +119,8 @@ body {
 
 /* ALINHAMENTO DOS BOTÕES */
 button {
+    font-family: 'Comic Sans MS', sans-serif;
+    /* Define a fonte utilizada */
     margin-top: 10px;
     /* Adiciona espaço acima dos botões */
     margin-left: 10px;
@@ -127,8 +133,8 @@ button {
     /* Remove a borda dos botões */
     border-radius: 5px;
     /* Arredonda os cantos dos botões */
-    background-color: #ababab;
-    /* Define a cor de fundo dos botões */
+    background-color: #FF6B6B;
+    /* Define a cor de fundo dos botões inicial */
     color: white;
     /* Define a cor do texto dos botões como branco */
     cursor: pointer;
@@ -138,8 +144,8 @@ button {
 }
 
 button:hover {
-    background-color: #ccc;
-    /* Muda a cor de fundo dos botões ao passar o mouse */
+    background-color: darkgreen;
+    /* Muda a cor de fundo do botão ao passar o mouse */
 }
 
 /* CRIANDO O TABULEIRO */
