@@ -31,7 +31,7 @@ dd {
 
 /* CENTRALIZAR PÁGINA */
 body {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /* Define a fonte utilizada */
     display: flex;
     /* Usa Flexbox para centralizar elementos */
@@ -45,7 +45,7 @@ body {
     /* Remove margens do body */
     flex-direction: column;
     /* Organiza os filhos em coluna */
-    background-color: #FFFBCC;
+    background-color: #E8F5E9;
     /* Define a cor de fundo principal */
 }
 
@@ -119,7 +119,7 @@ body {
 
 /* ALINHAMENTO DOS BOTÕES */
 button {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /* Define a fonte utilizada */
     margin-top: 10px;
     /* Adiciona espaço acima dos botões */
@@ -133,7 +133,7 @@ button {
     /* Remove a borda dos botões */
     border-radius: 5px;
     /* Arredonda os cantos dos botões */
-    background-color: #FF6B6B;
+    background-color: #1E88E5;
     /* Define a cor de fundo dos botões */
     color: white;
     /* Define a cor do texto dos botões como branco */
@@ -168,7 +168,7 @@ button:hover {
     /* Define a largura das cartas */
     height: 100px;
     /* Define a altura das cartas */
-    background-color: #ccc;
+    background-color: #C8E6C9;
     /* Define a cor de fundo das cartas */
     display: flex;
     /* Usa Flexbox para centralizar o conteúdo da carta */
