@@ -4,7 +4,7 @@ const images = [
     'w_7.png', 'w_8.png', 'w_10.png', 'w_11.png', 'w_95.png', 'w_98.png', 'w_Vista.png', 'w_XP.png'
 ];
 
-// VARIAVEIS DE CARTAS
+// VARIÁVEIS DE CARTAS
 let primeiraCarta, segundaCarta; // Variáveis para armazenar as cartas selecionadas
 let cartaVirada = false; // Controle para verificar se uma carta está virada
 let jogoBloqueado = false; // Controle para bloquear cliques durante animações
@@ -31,12 +31,12 @@ function criarTabuleiro() {
 
     // Cria as cartas no tabuleiro
     imagensEmbaralhadas.forEach((imagem, index) => {
-        const carta = document.createElement('div');
+        const carta = document.createElement('div'); // Cria um novo elemento de carta
         carta.classList.add('carta'); // Adiciona a classe 'carta'
         carta.setAttribute('data-id', index); // Define o ID da carta
 
         // Cria a imagem
-        const img = document.createElement('img');
+        const img = document.createElement('img'); // Cria um novo elemento de imagem
         img.src = `./assets/img/png/${imagem}`; // Define o caminho da imagem
         img.style.display = 'none'; // Esconde a imagem inicialmente
         carta.appendChild(img); // Adiciona a imagem à carta
@@ -59,7 +59,7 @@ function virarCarta() {
     if (jogoBloqueado || this === primeiraCarta || this.classList.contains('pair-found')) return; // Bloqueia cartas já viradas ou que formaram par
 
     this.classList.add('flipped'); // Adiciona a classe 'flipped'
-    const img = this.querySelector('img');
+    const img = this.querySelector('img'); // Obtém a imagem da carta
     img.style.display = 'block'; // Exibe a imagem da carta
 
     if (!cartaVirada) {
@@ -115,32 +115,37 @@ function resetar() {
     }
 }
 
-
 // FUNÇÃO PARA INICIAR O JOGO
 function iniciarJogo() {
+    // Zera contadores de tempo e erro ao iniciar o jogo
+    erroCount = 0; // Reseta o contador de erros
+    paresEncontrado = 0; // Reseta o contador de pares encontrados
+    clearInterval(contadorTempo); // Para o contador de tempo
+
     jogoIniciado = true; // Marca o jogo como iniciado
     document.getElementById('restartButton').disabled = false; // Ativa o botão de reiniciar
     criarTabuleiro(); // Cria o tabuleiro
     tempoInicial = 0; // Reseta o tempo inicial
+    document.getElementById('errorCount').textContent = `Erros: ${erroCount}`; // Atualiza o contador de erros
     document.getElementById('timer').textContent = `Tempo: ${tempoInicial} Segundos`; // Atualiza o texto do tempo
 
     // Exibe todas as cartas por 2 segundos
     const todasCartas = document.querySelectorAll('.carta');
     todasCartas.forEach(carta => {
         carta.classList.add('flipped'); // Vira a carta para exibir a imagem
-        const img = carta.querySelector('img');
+        const img = carta.querySelector('img'); // Obtém a imagem da carta
         img.style.display = 'block'; // Exibe a imagem da carta
     });
 
     setTimeout(() => {
         todasCartas.forEach(carta => {
             carta.classList.remove('flipped'); // Vira as cartas de volta após 2 segundos
-            const img = carta.querySelector('img');
+            const img = carta.querySelector('img'); // Obtém a imagem da carta
             img.style.display = 'none'; // Esconde a imagem da carta
         });
         // Inicia o contador de tempo
         contadorTempo = setInterval(() => {
-            tempoInicial++;
+            tempoInicial++; // Incrementa o tempo
             document.getElementById('timer').textContent = `Tempo: ${tempoInicial} Segundos`; // Atualiza o texto do tempo
         }, 1000); // Atualiza a cada segundo
     }, 2000); // Espera 2 segundos antes de virar as cartas de volta
@@ -149,10 +154,6 @@ function iniciarJogo() {
 // EVENTO PARA O BOTÃO DE REINICIAR
 document.getElementById('restartButton').addEventListener('click', () => {
     if (jogoIniciado) { // Apenas permite reiniciar se o jogo já tiver iniciado
-        erroCount = 0; // Reseta o contador de erros
-        document.getElementById('errorCount').textContent = `Erros: ${erroCount}`; // Atualiza o contador de erros
-        paresEncontrado = 0; // Reseta o contador de pares encontrados
-        clearInterval(contadorTempo); // Para o contador de tempo
         iniciarJogo(); // Inicia o jogo novamente
     }
 });
