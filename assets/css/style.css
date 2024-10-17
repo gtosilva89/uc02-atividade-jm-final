@@ -51,10 +51,18 @@ body {
 
 /* DEFINIR DIMENSÕES DIV ROOT */
 #root {
-    width: 1000px;
+    width: 500px;
     /* Define a largura do container principal */
-    height: 90vh;
+    height: 60vh;
     /* Define a altura do container como 90% da altura da viewport */
+    margin: auto;
+    /* Centraliza o root horizontalmente */
+    display: flex;
+    /* Usa Flexbox para organizar o conteúdo */
+    flex-direction: column;
+    /* Organiza os filhos em coluna */
+    align-items: center;
+    /* Centraliza os itens verticalmente */
 }
 
 /* DEFINIR DIMENSÕES DIV HEADER */
